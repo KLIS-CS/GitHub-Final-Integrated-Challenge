@@ -1,0 +1,49 @@
+name: Start Exercise
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  start:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create checkpoint issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const marker = '<!-- klis-cp5-exercise -->';
+            const username = context.actor;
+            const branch = `cp5-${username}`;
+
+            const issues = await github.paginate(github.rest.issues.listForRepo, {owner, repo, state:'all', per_page:100});
+            const existing = issues.find(i => !i.pull_request && i.body?.includes(marker));
+            if (existing) { core.info(`Exercise issue already exists: #${existing.number}`); return; }
+
+            const body = `${marker}
+            ## Checkpoint 5 — Final Integrated Challenge
+
+            Welcome @${username}.
+
+            **Required branch:** \`${branch}\`
+
+            This is the mastery checkpoint. Read the README first; you are expected to choose and execute the workflow independently.
+
+            ### Required evidence
+            - \`final-project/README.md\`
+            - \`final-project/.gitignore\`
+            - \`final-project/LICENSE\`
+            - \`final-project/src/index.js\`
+            - a student-created \`[CP5]\` Issue with acceptance criteria, label, and self-assignment
+            - GitHub Project evidence recorded in \`submission.md\`
+            - a Pull Request to \`main\` that closes/references the CP5 Issue
+            - all conceptual and debugging responses completed
+
+            Do not work directly on \`main\`. Leave the Pull Request open for teacher review.
+            `;
+
+            await github.rest.issues.create({owner, repo, title:'Exercise: Checkpoint 5 — Final Integrated Challenge', body});
