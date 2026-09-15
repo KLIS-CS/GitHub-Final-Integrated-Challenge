@@ -6,8 +6,6 @@ on:
   pull_request_target:
     types: [opened, reopened, synchronize, edited, closed]
     branches: [main]
-  issues:
-    types: [opened, edited, labeled, unlabeled, assigned, unassigned, closed, reopened]
   issue_comment:
     types: [created, edited]
 
@@ -34,9 +32,7 @@ jobs:
             if (context.eventName === 'issue_comment') {
               eventPR = (await github.rest.pulls.get({owner, repo, pull_number:context.payload.issue.number})).data;
             }
-
-            const username = eventPR ? eventPR.user.login :
-              context.eventName === 'issues' ? context.payload.issue.user.login : context.actor;
+            const username = eventPR ? eventPR.user.login : context.actor;
             const branch = `cp5-${username}`;
 
             let branchExists = false;
@@ -68,8 +64,7 @@ jobs:
             const submission = await read('submission.md');
             const field = label => submission.match(new RegExp(`^${label}:\\s*(\\S.*)$`, 'mi'))?.[1]?.trim() || '';
             const answer = heading => submission.match(new RegExp(`## ${heading}[\\s\\S]*?\\nAnswer:\\s*([\\s\\S]*?)(?=\\n## |$)`, 'i'))?.[1]?.trim() || '';
-            const submissionComplete = ['Name','GitHub Username','Required Branch','Issue Number','Project URL','Project Statuses Used','Pull Request Number'].every(field) &&
-              ['Question 1','Question 2','Question 3','Question 4','Question 5','Debugging Scenario A','Debugging Scenario B','Debugging Scenario C','Debugging Scenario D','Reflection'].every(answer);
+            const submissionComplete = ['Name','GitHub Username','Required Branch','Issue Number','Project URL','Project Statuses Used','Pull Request Number'].every(field) && ['Question 1','Question 2','Question 3','Question 4','Question 5','Debugging Scenario A','Debugging Scenario B','Debugging Scenario C','Debugging Scenario D','Reflection'].every(answer);
 
             const allIssues = await github.paginate(github.rest.issues.listForRepo, {owner, repo, state:'all', per_page:100});
             const cpIssue = allIssues.find(i => !i.pull_request && /^\[CP5\]/i.test(i.title) && i.user?.login?.toLowerCase() === username.toLowerCase());
@@ -96,8 +91,8 @@ jobs:
               ['PR closes/references CP5 Issue', closesIssue ? 10 : 0, 10, closesIssue ? `closing reference to #${cpIssue.number}` : 'use Closes #N / Fixes #N / Resolves #N'],
               ['Submission complete', submissionComplete ? 10 : 0, 10, submissionComplete ? 'all fields and debugging responses completed' : 'complete submission.md']
             ];
-
             const automatic = checks.reduce((s,c) => s + c[1], 0);
+
             let manual = null;
             if (pr) {
               const comments = await github.paginate(github.rest.issues.listComments, {owner, repo, issue_number:pr.number, per_page:100});
@@ -116,8 +111,8 @@ jobs:
 
             let progress = allIssues.find(i => !i.pull_request && i.body?.includes(marker));
             if (!progress) progress = (await github.rest.issues.create({owner, repo, title:'Checkpoint 5 — Progress', body:marker})).data;
-            const comments = await github.paginate(github.rest.issues.listComments, {owner, repo, issue_number:progress.number, per_page:100});
-            const old = comments.find(c => c.user?.type === 'Bot' && c.body?.includes(marker));
+            const progressComments = await github.paginate(github.rest.issues.listComments, {owner, repo, issue_number:progress.number, per_page:100});
+            const old = progressComments.find(c => c.user?.type === 'Bot' && c.body?.includes(marker));
             if (old) await github.rest.issues.updateComment({owner, repo, comment_id:old.id, body:progressBody});
             else await github.rest.issues.createComment({owner, repo, issue_number:progress.number, body:progressBody});
 
