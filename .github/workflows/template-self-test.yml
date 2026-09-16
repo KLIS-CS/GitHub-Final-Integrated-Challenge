@@ -3,10 +3,10 @@ name: CP5 Assessment Self-Test
 on:
   push:
     branches: [main]
-    paths: ['README.md','submission.md','TEACHER-GRADING.md','.github/**']
+    paths: ['README.md','.github/**']
   pull_request:
     branches: [main]
-    paths: ['README.md','submission.md','TEACHER-GRADING.md','.github/**']
+    paths: ['README.md','.github/**']
 
 permissions:
   contents: read
@@ -17,24 +17,33 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Validate CP5 template
+      - name: Validate CP5 from-scratch portal
         shell: bash
         run: |
           set -euo pipefail
-          for f in README.md submission.md TEACHER-GRADING.md .github/pull_request_template.md .github/workflows/0-start-exercise.yml .github/workflows/grade.yml .github/workflows/guardrails.yml; do
+          for f in \
+            README.md \
+            .github/ISSUE_TEMPLATE/cp5-submission.yml \
+            .github/workflows/grade-external-submission.yml; do
             test -f "$f" || { echo "Missing $f"; exit 1; }
           done
+
+          grep -q 'do NOT copy this repository' README.md
+          grep -q 'GitHub → New repository' README.md
+          grep -q 'cp5-final-integrated-YOUR-GITHUB-USERNAME' README.md
           grep -q 'cp5-YOUR-GITHUB-USERNAME' README.md
-          grep -q 'Debugging Scenario A' submission.md
-          grep -q 'Debugging Scenario D' submission.md
-          grep -q '/manual-grade' .github/workflows/grade.yml
-          grep -q 'Workflow: 0/10' .github/workflows/grade.yml
-          grep -q 'Project evidence: 0/5' .github/workflows/grade.yml
-          grep -q 'Concepts: 0/10' .github/workflows/grade.yml
-          grep -q 'Debugging: 0/10' .github/workflows/grade.yml
-          grep -q 'Reflection: 0/5' .github/workflows/grade.yml
-          grep -q 'fixed template' TEACHER-GRADING.md
-          echo 'CP5 template structure is valid.'
+          grep -q 'Submit CP5' README.md
+          grep -q 'Practice Repository URL' .github/ISSUE_TEMPLATE/cp5-submission.yml
+          grep -q 'Debugging Scenario A' .github/ISSUE_TEMPLATE/cp5-submission.yml
+          grep -q 'Debugging Scenario D' .github/ISSUE_TEMPLATE/cp5-submission.yml
+          grep -q 'created the CP5 repository myself' .github/ISSUE_TEMPLATE/cp5-submission.yml
+          grep -q '/manual-grade' .github/workflows/grade-external-submission.yml
+          grep -q 'Workflow independence: 0/10' .github/workflows/grade-external-submission.yml
+          grep -q 'Project evidence: 0/5' .github/workflows/grade-external-submission.yml
+          grep -q 'Concepts: 0/10' .github/workflows/grade-external-submission.yml
+          grep -q 'Debugging: 0/10' .github/workflows/grade-external-submission.yml
+          grep -q 'Reflection: 0/5' .github/workflows/grade-external-submission.yml
+          echo 'CP5 from-scratch assessment portal is valid.'
 
       - name: Validate workflow YAML syntax
         shell: bash
