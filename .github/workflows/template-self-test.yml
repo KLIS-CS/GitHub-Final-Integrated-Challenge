@@ -40,6 +40,7 @@ jobs:
           grep -q 'Final score' README.md
           grep -q 'student-score-reusable.yml@main' README.md
           grep -q 'Practice Repository URL' .github/ISSUE_TEMPLATE/cp5-submission.yml
+          grep -q 'normalized to the repository automatically' .github/ISSUE_TEMPLATE/cp5-submission.yml
           grep -q 'Debugging Scenario A' .github/ISSUE_TEMPLATE/cp5-submission.yml
           grep -q 'Debugging Scenario D' .github/ISSUE_TEMPLATE/cp5-submission.yml
           grep -q 'created the CP5 repository myself' .github/ISSUE_TEMPLATE/cp5-submission.yml
@@ -49,6 +50,8 @@ jobs:
           grep -q 'Concepts: 0/10' .github/workflows/grade-external-submission.yml
           grep -q 'Debugging: 0/10' .github/workflows/grade-external-submission.yml
           grep -q 'Reflection: 0/5' .github/workflows/grade-external-submission.yml
+          grep -q 'const parsed = new URL' .github/workflows/grade-external-submission.yml
+          grep -q '\*\*Final score:\*\*' .github/workflows/grade-external-submission.yml
           grep -q '.cp5-grades/' .github/workflows/publish-grade.yml
           grep -q 'FINAL SCORE' .github/workflows/publish-grade.yml
           grep -q 'klis-cp5-local-score' .github/workflows/student-score-reusable.yml
