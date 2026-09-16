@@ -2,62 +2,100 @@
 
 ## Goal
 
-Complete a small software-development workflow independently. This checkpoint integrates repository setup, Issues/Projects, local Git, feature branches, commits, pushes, Pull Requests, and debugging.
+Prove that you can start a project **from scratch** and then carry it through a complete Git/GitHub development workflow independently.
 
-## Start the exercise
+CP5 combines both major abilities from the unit:
 
-Copy this checkpoint into your own GitHub account:
+```text
+CREATE a repository
++
+MODIFY it safely through Git
++
+MANAGE the work in GitHub
++
+DEBUG mistakes
+```
 
-[![Copy Exercise](https://img.shields.io/badge/Copy%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=KLIS-CS&template_name=GitHub-Final-Integrated-Challenge&owner=%40me&name=cp5-final-integrated-challenge&description=Checkpoint+5:+Final+Integrated+GitHub+Challenge&visibility=private)
+## Start CP5 — do NOT copy this repository
 
-After the copy is created:
+This KLIS-CS repository is the **instruction and grading portal only**. Your assessed CP5 project must be created by you with **GitHub → New repository**.
 
-1. Open **Actions**.
-2. Select **Start Exercise**.
-3. Choose **Run workflow**.
-4. Read the Exercise Issue that GitHub Actions creates for you.
-5. Clone your copied repository to your computer and complete the checkpoint independently.
+Create a new **Public** repository in your own GitHub account named exactly:
 
-> The source repository must be enabled as a GitHub **Template repository** for the Copy Exercise button to work.
+```text
+cp5-final-integrated-YOUR-GITHUB-USERNAME
+```
 
-## Required Branch
+Do not fork another repository and do not use **Use this template**.
+
+When creating the repository, configure it yourself with:
+
+- `README.md`
+- an appropriate `.gitignore`
+- a real open-source `LICENSE`
+
+## Scenario
+
+Your team needs a JavaScript feature that displays a welcome message. You are responsible for creating the project, tracking the work, implementing the feature, and submitting it for review.
+
+## Required workflow
+
+### 1. Create the repository
+
+Create the public repository yourself and make the initial repository-setup decisions.
+
+### 2. Clone it locally
+
+Clone your new repository to your computer and inspect it before changing anything:
+
+```bash
+git status
+git branch
+git remote -v
+```
+
+### 3. Create and track the work
+
+Create a GitHub Issue whose title begins with:
+
+```text
+[CP5]
+```
+
+The Issue must:
+
+- clearly describe the feature;
+- include at least two acceptance-criteria checkboxes;
+- have at least one label;
+- be assigned to you.
+
+Add the Issue to a GitHub Project and move it through appropriate statuses such as **Todo → In Progress → Done**.
+
+### 4. Modify the project through a feature branch
+
+Create this branch locally:
 
 ```text
 cp5-YOUR-GITHUB-USERNAME
 ```
 
-## Scenario
+Do **not** implement the feature directly on `main`.
 
-Your team needs a JavaScript feature that displays a welcome message on the homepage. You are responsible for setting up the work, tracking it, implementing it, and submitting it for review.
+On the feature branch:
 
-## Requirements
+- create `src/index.js`;
+- add working JavaScript that produces or displays a welcome message;
+- make at least one meaningful improvement to `README.md`;
+- use `git status` before staging;
+- `git add` the intended changes;
+- commit with a meaningful message;
+- push the feature branch to `origin`.
 
-### 1. Create the project files
+### 5. Open a Pull Request
 
-Inside `final-project/`, create:
+Open a Pull Request from your CP5 branch into `main`.
 
-```text
-README.md
-.gitignore
-LICENSE
-src/index.js
-```
-
-`src/index.js` must contain working JavaScript that produces or displays a welcome message.
-
-### 2. Track the work
-
-Create a GitHub Issue whose title begins with `[CP5]`. It must describe the feature, include at least two acceptance-criteria checkboxes, have at least one label, and be assigned to you.
-
-Add the Issue to a GitHub Project and move it through appropriate statuses. Record the Project evidence in `submission.md`.
-
-### 3. Implement through Git
-
-Without working directly on `main`, create the required branch, use `git status` to inspect repository state, add and commit your changes, and push the branch to `origin`.
-
-### 4. Open a Pull Request
-
-Open a Pull Request to `main`. The PR body must reference the CP5 Issue with a closing keyword such as:
+The PR body must connect the code to your CP5 Issue with a closing keyword, for example:
 
 ```text
 Closes #12
@@ -65,16 +103,48 @@ Closes #12
 
 Leave the Pull Request open for teacher review.
 
-### 5. Debugging / recovery reasoning
+### 6. Debugging / recovery
 
-Complete all debugging scenarios in `submission.md`. Explain what you would inspect first and how you would recover.
+The submission form includes recovery scenarios covering:
 
-## Scoring
+- accidentally working on `main`;
+- a file missing from a commit;
+- a branch with no upstream;
+- an incorrect remote URL.
 
-- **60 points** — automatic Git/GitHub evidence
-- **40 points** — teacher review of independence, Project evidence, debugging, and explanations
+Explain what you would inspect first and how you would recover.
 
-When the required Pull Request is open, the grader posts the live score and a fixed **Teacher grading** template directly in that PR.
+## Submit CP5
+
+When the project is complete, submit the repository through the central CP5 form:
+
+[![Submit CP5](https://img.shields.io/badge/SUBMIT%20CP5-%E2%86%92-0969da?style=for-the-badge&logo=github)](https://github.com/KLIS-CS/GitHub-Final-Integrated-Challenge/issues/new?template=cp5-submission.yml)
+
+The automatic grader inspects your public repository, feature branch, Issue, and Pull Request. GitHub Project quality and debugging explanations remain teacher-reviewed.
+
+## Automatic evidence — 60 points
+
+| Evidence | Points |
+|---|---:|
+| Correct public student-owned repository created from scratch | 10 |
+| README / `.gitignore` / LICENSE / `src/index.js` | 10 |
+| Correct feature branch + commit ahead of `main` | 10 |
+| `[CP5]` Issue with checklist, label, and assignee | 10 |
+| Open PR to `main` with closing Issue reference | 10 |
+| Complete conceptual / Project / debugging submission | 10 |
+| **Automatic subtotal** | **60** |
+
+## Teacher review — 40 points
+
+Teacher review focuses on:
+
+- workflow independence;
+- GitHub Project evidence;
+- conceptual understanding;
+- debugging / recovery reasoning;
+- reflection and work quality.
+
+**Final score = Automatic /60 + Teacher /40 = /100.**
 
 ## Checkpoint Navigation
 
