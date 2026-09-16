@@ -34,9 +34,16 @@ jobs:
               return value === '_No response_' ? '' : value;
             };
 
-            const parseRepoUrl = url => {
-              const m = (url || '').trim().match(/^https:\/\/github\.com\/([^/\s]+)\/([^/#?\s]+?)(?:\.git)?\/?$/i);
-              return m ? { owner: m[1], repo: m[2].replace(/\.git$/i, '') } : null;
+            const parseRepoUrl = value => {
+              try {
+                const parsed = new URL((value || '').trim());
+                if (parsed.protocol !== 'https:' || parsed.hostname.toLowerCase() !== 'github.com') return null;
+                const parts = parsed.pathname.split('/').filter(Boolean);
+                if (parts.length < 2) return null;
+                return { owner: parts[0], repo: parts[1].replace(/\.git$/i, '') };
+              } catch {
+                return null;
+              }
             };
 
             async function publicJson(url) {
@@ -262,6 +269,7 @@ jobs:
 
             const teacher = manual?.score ?? 0;
             const total = automatic + teacher;
+            const finalLine = manual ? `${total}/100` : 'pending teacher review';
             const rows = checks.map(([label, earned, max, detail]) =>
               `| ${earned === max ? '✅' : earned ? '🟨' : '⬜'} ${label} | ${earned}/${max} | ${detail} |`
             ).join('\n');
@@ -293,7 +301,7 @@ jobs:
             **Practice repository:** ${repositoryUrl || 'not provided'}  
             **Automatic score:** ${automatic}/60  
             **Teacher score:** ${manual ? `${teacher}/40 by @${manual.grader}` : 'awaiting review'}  
-            **Current total:** ${total}/100
+            **Final score:** ${finalLine}
 
             | Check | Score | Evidence |
             |---|---:|---|
