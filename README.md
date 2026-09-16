@@ -2,9 +2,9 @@
 
 ## Goal
 
-Prove that you can start a project **from scratch** and then carry it through a complete Git/GitHub development workflow independently.
+Prove that you can start a project **from scratch** and carry it through a complete Git/GitHub development workflow independently.
 
-CP5 combines both major abilities from the unit:
+CP5 combines:
 
 ```text
 CREATE a repository
@@ -46,7 +46,7 @@ Create the public repository yourself and make the initial repository-setup deci
 
 ### 2. Clone it locally
 
-Clone your new repository to your computer and inspect it before changing anything:
+Clone your new repository and inspect it before changing anything:
 
 ```bash
 git status
@@ -56,11 +56,7 @@ git remote -v
 
 ### 3. Create and track the work
 
-Create a GitHub Issue whose title begins with:
-
-```text
-[CP5]
-```
+Create a GitHub Issue whose title begins with `[CP5]`.
 
 The Issue must:
 
@@ -116,11 +112,15 @@ Explain what you would inspect first and how you would recover.
 
 ## Submit CP5
 
-When the project is complete, submit the repository through the central CP5 form:
-
 [![Submit CP5](https://img.shields.io/badge/SUBMIT%20CP5-%E2%86%92-0969da?style=for-the-badge&logo=github)](https://github.com/KLIS-CS/GitHub-Final-Integrated-Challenge/issues/new?template=cp5-submission.yml)
 
-The automatic grader inspects your public repository, feature branch, Issue, and Pull Request. GitHub Project quality and debugging explanations remain teacher-reviewed.
+The mother repository automatically inspects your public repository, feature branch, Issue, and Pull Request. The teacher then grades the `/40` rubric in the same mother-repository submission Issue.
+
+After grading, a **CP5 Published Grade** record shows:
+
+- Automatic score `/60`
+- Teacher score `/40`
+- **Final score `/100`**
 
 ## Automatic evidence — 60 points
 
@@ -144,7 +144,54 @@ Teacher review focuses on:
 - debugging / recovery reasoning;
 - reflection and work quality.
 
+The teacher enters this in the mother repository:
+
+```text
+/manual-grade
+Workflow independence: 0/10
+Project evidence: 0/5
+Concepts: 0/10
+Debugging: 0/10
+Reflection: 0/5
+
+Feedback:
+Write concise feedback here.
+```
+
 **Final score = Automatic /60 + Teacher /40 = /100.**
+
+## Optional: show the score inside your own CP5 repository
+
+CP5 must still be created from scratch, so it does **not** inherit a scoring workflow from a template. If your class wants the same student-side score display used in CP1–CP4, add this system file to your CP5 repository:
+
+```text
+.github/workflows/cp5-score.yml
+```
+
+Use this content:
+
+```yaml
+name: CP5 — Student Score
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '47 * * * *'
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  score:
+    uses: KLIS-CS/GitHub-Final-Integrated-Challenge/.github/workflows/student-score-reusable.yml@main
+```
+
+This system file is **not part of the graded project content**. It only reads the published grade from the mother repository and creates/updates a **CP5 — Score** Issue in your own repository.
+
+After your teacher grades CP5, you can refresh immediately with:
+
+**Actions → CP5 — Student Score → Run workflow**
 
 ## Checkpoint Navigation
 
