@@ -15,18 +15,44 @@ Final score: **60 automatic + 40 teacher-reviewed = 100**.
 
 ## Entering the Teacher Grade
 
-Add a Pull Request conversation comment containing:
+Every student Pull Request automatically receives a **Teacher grading** block from the bot. Use the fixed template shown there:
 
 ```text
-/manual-grade 38
+/manual-grade
+Workflow: 0/10
+Project evidence: 0/5
+Concepts: 0/10
+Debugging: 0/10
+Reflection: 0/5
 
+Feedback:
+Write concise feedback here.
+```
+
+Copy the block into a **new PR comment**, replace the scores, and add feedback. The workflow calculates the 40-point teacher subtotal automatically and combines it with the automatic 60 points.
+
+Example:
+
+```text
+/manual-grade
 Workflow: 10/10
 Project evidence: 5/5
 Concepts: 9/10
 Debugging: 9/10
 Reflection: 5/5
 
-Feedback: ...
+Feedback:
+Strong integrated workflow. Your recovery strategy is safe and state-first; make the distinction between commit and push slightly more explicit.
 ```
 
-The newest valid `/manual-grade 0-40` comment by `hbycwyh2008` is used.
+The newest valid grading comment by `hbycwyh2008` is used. To revise a grade, post a new completed template.
+
+The older short form remains accepted for compatibility:
+
+```text
+/manual-grade 38
+```
+
+## Recommended teacher check
+
+CP5 is the mastery checkpoint. Verify that the student can connect the entire workflow without following a step-by-step recipe: Issue/Project planning, feature-branch work, meaningful commit(s), push, PR, closing reference, and safe debugging reasoning. The debugging responses should begin by inspecting repository state before proposing corrective commands.
