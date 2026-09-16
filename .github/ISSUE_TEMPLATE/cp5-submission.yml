@@ -1,0 +1,143 @@
+name: CP5 Submission — Final Integrated Challenge
+description: Submit the public CP5 repository you created and developed independently.
+title: "[CP5 Submission] Final Integrated Challenge"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Checkpoint 5 — Final Integrated GitHub Challenge
+
+        Submit only after your public CP5 repository, feature branch, Issue, Project work, and open Pull Request are ready for review.
+
+        Required repository name:
+        `cp5-final-integrated-YOUR-GITHUB-USERNAME`
+
+        Required feature branch:
+        `cp5-YOUR-GITHUB-USERNAME`
+
+  - type: input
+    id: repository_url
+    attributes:
+      label: Practice Repository URL
+      description: Full URL of the public CP5 repository you created from scratch.
+      placeholder: https://github.com/YOUR-USERNAME/cp5-final-integrated-YOUR-USERNAME
+    validations:
+      required: true
+
+  - type: input
+    id: github_username
+    attributes:
+      label: GitHub Username
+      placeholder: octocat
+    validations:
+      required: true
+
+  - type: input
+    id: project_url
+    attributes:
+      label: GitHub Project URL
+      description: Paste the Project URL used to track your CP5 Issue.
+    validations:
+      required: true
+
+  - type: input
+    id: project_statuses
+    attributes:
+      label: Project Statuses Used
+      description: List the statuses you moved the work through, for example Todo → In Progress → Done.
+    validations:
+      required: true
+
+  - type: textarea
+    id: q1
+    attributes:
+      label: Question 1 — Feature Branch
+      description: Why should this feature be implemented on a feature branch instead of directly on main?
+    validations:
+      required: true
+
+  - type: textarea
+    id: q2
+    attributes:
+      label: Question 2 — Commit vs Push
+      description: Explain the difference between git commit and git push.
+    validations:
+      required: true
+
+  - type: textarea
+    id: q3
+    attributes:
+      label: Question 3 — Origin
+      description: What does origin mean in your local repository?
+    validations:
+      required: true
+
+  - type: textarea
+    id: q4
+    attributes:
+      label: Question 4 — Issue Before Coding
+      description: Why create an Issue before or while implementing the feature?
+    validations:
+      required: true
+
+  - type: textarea
+    id: q5
+    attributes:
+      label: Question 5 — Pull Request
+      description: What does a Pull Request allow a team to do before changes enter main?
+    validations:
+      required: true
+
+  - type: textarea
+    id: debug_a
+    attributes:
+      label: Debugging Scenario A — You are on main
+      description: You realize you started editing on main. What do you inspect first, and how do you recover before committing the feature to main?
+    validations:
+      required: true
+
+  - type: textarea
+    id: debug_b
+    attributes:
+      label: Debugging Scenario B — File missing from commit
+      description: You committed, but one intended file is missing from the commit. What do you inspect and what do you do next?
+    validations:
+      required: true
+
+  - type: textarea
+    id: debug_c
+    attributes:
+      label: Debugging Scenario C — No upstream branch
+      description: git push reports that the current branch has no upstream branch. Explain the correct recovery.
+    validations:
+      required: true
+
+  - type: textarea
+    id: debug_d
+    attributes:
+      label: Debugging Scenario D — Wrong remote URL
+      description: You discover origin points to the wrong GitHub repository. What command helps diagnose it, and how would you correct it?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reflection
+    attributes:
+      label: Reflection
+      description: Which part of the complete Git/GitHub workflow required the most judgment, and why?
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: integrity
+    attributes:
+      label: Integrity Check
+      options:
+        - label: I created the CP5 repository myself with GitHub → New repository; I did not fork or use a template.
+          required: true
+        - label: I cloned the repository locally and implemented the feature through the required feature branch.
+          required: true
+        - label: I created and managed the CP5 Issue and Project work myself.
+          required: true
+        - label: I did not include passwords, API keys, tokens, or other secrets in the repository.
+          required: true
