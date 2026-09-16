@@ -4,6 +4,22 @@
 
 Complete a small software-development workflow independently. This checkpoint integrates repository setup, Issues/Projects, local Git, feature branches, commits, pushes, Pull Requests, and debugging.
 
+## Start the exercise
+
+Copy this checkpoint into your own GitHub account:
+
+[![Copy Exercise](https://img.shields.io/badge/Copy%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=KLIS-CS&template_name=GitHub-Final-Integrated-Challenge&owner=%40me&name=cp5-final-integrated-challenge&description=Checkpoint+5:+Final+Integrated+GitHub+Challenge&visibility=private)
+
+After the copy is created:
+
+1. Open **Actions**.
+2. Select **Start Exercise**.
+3. Choose **Run workflow**.
+4. Read the Exercise Issue that GitHub Actions creates for you.
+5. Clone your copied repository to your computer and complete the checkpoint independently.
+
+> The source repository must be enabled as a GitHub **Template repository** for the Copy Exercise button to work.
+
 ## Required Branch
 
 ```text
@@ -57,6 +73,8 @@ Complete all debugging scenarios in `submission.md`. Explain what you would insp
 
 - **60 points** — automatic Git/GitHub evidence
 - **40 points** — teacher review of independence, Project evidence, debugging, and explanations
+
+When the required Pull Request is open, the grader posts the live score and a fixed **Teacher grading** template directly in that PR.
 
 ## Checkpoint Navigation
 
