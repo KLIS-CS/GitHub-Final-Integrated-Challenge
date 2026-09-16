@@ -19,7 +19,7 @@ body:
     id: repository_url
     attributes:
       label: Practice Repository URL
-      description: Full URL of the public CP5 repository you created from scratch.
+      description: Full GitHub URL of the public CP5 repository you created from scratch. Repository, /tree/main, and file URLs are normalized to the repository automatically.
       placeholder: https://github.com/YOUR-USERNAME/cp5-final-integrated-YOUR-USERNAME
     validations:
       required: true
