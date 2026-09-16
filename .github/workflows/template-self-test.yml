@@ -24,7 +24,10 @@ jobs:
           for f in \
             README.md \
             .github/ISSUE_TEMPLATE/cp5-submission.yml \
-            .github/workflows/grade-external-submission.yml; do
+            .github/workflows/grade-external-submission.yml \
+            .github/workflows/publish-grade.yml \
+            .github/workflows/student-score-reusable.yml \
+            .github/examples/cp5-student-score.yml; do
             test -f "$f" || { echo "Missing $f"; exit 1; }
           done
 
@@ -33,6 +36,9 @@ jobs:
           grep -q 'cp5-final-integrated-YOUR-GITHUB-USERNAME' README.md
           grep -q 'cp5-YOUR-GITHUB-USERNAME' README.md
           grep -q 'Submit CP5' README.md
+          grep -q 'CP5 Published Grade' README.md
+          grep -q 'Final score' README.md
+          grep -q 'student-score-reusable.yml@main' README.md
           grep -q 'Practice Repository URL' .github/ISSUE_TEMPLATE/cp5-submission.yml
           grep -q 'Debugging Scenario A' .github/ISSUE_TEMPLATE/cp5-submission.yml
           grep -q 'Debugging Scenario D' .github/ISSUE_TEMPLATE/cp5-submission.yml
@@ -43,6 +49,9 @@ jobs:
           grep -q 'Concepts: 0/10' .github/workflows/grade-external-submission.yml
           grep -q 'Debugging: 0/10' .github/workflows/grade-external-submission.yml
           grep -q 'Reflection: 0/5' .github/workflows/grade-external-submission.yml
+          grep -q '.cp5-grades/' .github/workflows/publish-grade.yml
+          grep -q 'FINAL SCORE' .github/workflows/publish-grade.yml
+          grep -q 'klis-cp5-local-score' .github/workflows/student-score-reusable.yml
           echo 'CP5 from-scratch assessment portal is valid.'
 
       - name: Validate workflow YAML syntax
