@@ -1,7 +1,10 @@
-name: CP5 Template Self-Test
+name: CP5 Assessment Self-Test
 
 on:
   push:
+    branches: [main]
+    paths: ['README.md','submission.md','TEACHER-GRADING.md','.github/**']
+  pull_request:
     branches: [main]
     paths: ['README.md','submission.md','TEACHER-GRADING.md','.github/**']
 
@@ -13,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Validate CP5 template
         shell: bash
         run: |
@@ -24,4 +28,15 @@ jobs:
           grep -q 'Debugging Scenario A' submission.md
           grep -q 'Debugging Scenario D' submission.md
           grep -q '/manual-grade' .github/workflows/grade.yml
+          grep -q 'Workflow: 0/10' .github/workflows/grade.yml
+          grep -q 'Project evidence: 0/5' .github/workflows/grade.yml
+          grep -q 'Concepts: 0/10' .github/workflows/grade.yml
+          grep -q 'Debugging: 0/10' .github/workflows/grade.yml
+          grep -q 'Reflection: 0/5' .github/workflows/grade.yml
+          grep -q 'fixed template' TEACHER-GRADING.md
           echo 'CP5 template structure is valid.'
+
+      - name: Validate workflow YAML syntax
+        shell: bash
+        run: |
+          ruby -e "require 'yaml'; Dir['.github/workflows/*.yml'].each { |f| YAML.load_file(f); puts \"OK #{f}\" }"
