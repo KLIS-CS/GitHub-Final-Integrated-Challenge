@@ -25,7 +25,6 @@ jobs:
             const issueNumber = issue.number;
             const student = issue.user.login;
             const scoreMarker = '<!-- klis-cp5-external-score -->';
-            const publishedMarker = '<!-- klis-cp5-published-grade -->';
             const allowedGraders = new Set(['hbycwyh2008']);
             const escapeRegex = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
@@ -68,22 +67,8 @@ jobs:
             const finalLine = teacher === null ? 'pending teacher review' : `${total}/100`;
             const repositoryUrl = issue.body?.match(/### Practice Repository URL\s*\n+([^\n]+)/i)?.[1]?.trim() || '';
 
-            const body = `${publishedMarker}
-            ## CP5 Published Grade
-
-            **Student:** @${student}  
-            **Automatic score:** ${automatic}/60  
-            **Teacher score:** ${teacher === null ? 'awaiting review' : `${teacher}/40 by @${manual.grader}`}  
-            **Final score:** ${finalLine}
-
-            ${teacher === null ? '🔵 **Awaiting teacher review.**' : `✅ **FINAL SCORE: ${total}/100**`}
-
-            This published record is the source used by the optional student-side **CP5 — Score** sync.
-            `;
-
-            const existing = comments.find(c => c.user?.type === 'Bot' && c.body?.includes(publishedMarker));
-            if (existing) await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
-            else await github.rest.issues.createComment({ owner, repo, issue_number: issueNumber, body });
+            // The submission grader comment is the single student-facing score display.
+            // This workflow only publishes the machine-readable grade record used by dashboards/sync systems.
 
             const gradeBranch = 'grades';
             try { await github.rest.git.getRef({ owner, repo, ref: `heads/${gradeBranch}` }); }
