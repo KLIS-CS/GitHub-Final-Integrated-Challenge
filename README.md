@@ -2,72 +2,82 @@
 
 ## Goal
 
-Prove that you can start a project **from scratch** and carry it through a complete Git/GitHub development workflow independently.
+Prove that you can create a project **from scratch** and carry it through a complete Git/GitHub team workflow independently.
 
-CP5 combines:
+CP5 integrates:
 
 ```text
-CREATE a repository
-+
-MODIFY it safely through Git
-+
-MANAGE the work in GitHub
-+
-DEBUG mistakes
+repository setup
+→ local Git workflow
+→ Issue
+→ Project/Kanban
+→ feature branch
+→ Pull Request
+→ review
+→ merge
+→ Done
+→ debugging / recovery
 ```
 
 ## Start CP5 — do NOT copy this repository
 
-This KLIS-CS repository is the **instruction and grading portal only**. Your assessed CP5 project must be created by you with **GitHub → New repository**.
+This KLIS-CS repository is the **instruction and grading portal only**.
 
-Create a new **Public** repository in your own GitHub account named exactly:
+Create a new **Public** repository in your own GitHub account with **GitHub → New repository**. Do not fork and do not use **Use this template**.
+
+Required repository name:
 
 ```text
 cp5-final-integrated-YOUR-GITHUB-USERNAME
 ```
 
-Do not fork another repository and do not use **Use this template**.
-
-When creating the repository, configure it yourself with:
+When creating it, configure:
 
 - `README.md`
 - an appropriate `.gitignore`
 - a real open-source `LICENSE`
+- default branch `main`
 
 ## Scenario
 
-Your team needs a JavaScript feature that displays a welcome message. You are responsible for creating the project, tracking the work, implementing the feature, and submitting it for review.
+Your team needs a JavaScript feature that displays a welcome message. You are responsible for planning the work, implementing it safely, getting it reviewed, merging it, and closing the work item.
 
 ## Required workflow
 
-### 1. Create the repository
-
-Create the public repository yourself and make the initial repository-setup decisions.
-
-### 2. Clone it locally
+### 1. Create and inspect the repository
 
 Clone your new repository and inspect it before changing anything:
 
 ```bash
 git status
-git branch
+git branch -vv
 git remote -v
 ```
 
-### 3. Create and track the work
+### 2. Create one GitHub Project
 
-Create a GitHub Issue whose title begins with `[CP5]`.
+Create **one GitHub Project** with a **Board** view and these exact statuses:
 
-The Issue must:
+```text
+Todo → In Progress → Review → Done
+```
+
+This Project must track both the CP5 Issue and the CP5 Pull Request.
+
+### 3. Create the work Issue
+
+Create an Issue whose title begins with `[CP5]`.
+
+It must:
 
 - clearly describe the feature;
 - include at least two acceptance-criteria checkboxes;
 - have at least one label;
 - be assigned to you.
 
-Add the Issue to a GitHub Project and move it through appropriate statuses such as **Todo → In Progress → Done**.
+Add the Issue to the Project in **Todo**, then move it to **In Progress** when implementation begins.
 
-### 4. Modify the project through a feature branch
+### 4. Implement through a feature branch
 
 Create this branch locally:
 
@@ -75,7 +85,7 @@ Create this branch locally:
 cp5-YOUR-GITHUB-USERNAME
 ```
 
-Do **not** implement the feature directly on `main`.
+Do not implement the feature directly on `main`.
 
 On the feature branch:
 
@@ -83,44 +93,63 @@ On the feature branch:
 - add working JavaScript that produces or displays a welcome message;
 - make at least one meaningful improvement to `README.md`;
 - use `git status` before staging;
-- `git add` the intended changes;
+- stage only intended changes;
 - commit with a meaningful message;
-- push the feature branch to `origin`.
+- push the branch to `origin`.
 
-### 5. Open a Pull Request
+### 5. Open the Pull Request and move to Review
 
-Open a Pull Request from your CP5 branch into `main`.
+Open a Pull Request from `cp5-YOUR-GITHUB-USERNAME` → `main`.
 
-The PR body must connect the code to your CP5 Issue with a closing keyword, for example:
+The PR body must connect to the CP5 Issue with a closing keyword, for example:
 
 ```text
 Closes #12
 ```
 
-Leave the Pull Request open for teacher review.
+Then:
 
-### 6. Debugging / recovery
+1. add the PR to the **same GitHub Project**;
+2. move both Issue and PR to **Review**;
+3. request review from another GitHub user;
+4. receive at least one submitted **APPROVED** review.
+
+### 6. Merge and finish
+
+After approval:
+
+1. merge the Pull Request into `main`;
+2. confirm the linked Issue closes;
+3. move both Issue and PR to **Done**.
+
+Do not merge before approval. The grader compares review and merge timestamps.
+
+Deleting the feature branch after merge is allowed. The Pull Request keeps the head ref/SHA and review history needed for grading.
+
+### 7. Debugging / recovery
 
 The submission form includes recovery scenarios covering:
 
-- accidentally working on `main`;
+- accidentally editing on `main`;
 - a file missing from a commit;
 - a branch with no upstream;
 - an incorrect remote URL.
 
-Explain what you would inspect first and how you would recover.
+Explain what you would inspect first and how you would recover safely.
 
 ## Submit CP5
 
+Submit only after the reviewed PR is merged and the Project is in its final state:
+
 [![Submit CP5](https://img.shields.io/badge/SUBMIT%20CP5-%E2%86%92-0969da?style=for-the-badge&logo=github)](https://github.com/KLIS-CS/GitHub-Final-Integrated-Challenge/issues/new?template=cp5-submission.yml)
 
-The mother repository automatically inspects your public repository, feature branch, Issue, and Pull Request. The teacher then grades the `/40` rubric in the same mother-repository submission Issue.
+The repository URL and GitHub username are detected automatically.
 
-The **same CP5 Submission Issue** is the single grading page. Its automatic grading comment is updated in place and shows:
+The **same CP5 Submission Issue** is the single source of truth for grading. Its score comment is updated in place with:
 
 - Automatic score `/60`
 - Teacher score `/40`
-- **Final score `/100`**
+- Final score `/100`
 - Teacher feedback
 
 ## Automatic evidence — 60 points
@@ -128,11 +157,11 @@ The **same CP5 Submission Issue** is the single grading page. Its automatic grad
 | Evidence | Points |
 |---|---:|
 | Correct public student-owned repository created from scratch | 10 |
-| README / `.gitignore` / LICENSE / `src/index.js` | 10 |
-| Correct feature branch + commit ahead of `main` | 10 |
-| `[CP5]` Issue with checklist, label, and assignee | 10 |
-| Open PR to `main` with closing Issue reference | 10 |
-| Complete conceptual / Project / debugging submission | 10 |
+| Meaningful README / `.gitignore` / LICENSE / `src/index.js` | 10 |
+| Correct feature-branch and PR change/commit evidence | 10 |
+| `[CP5]` Issue quality and closure after merge | 10 |
+| PR links Issue, receives approval before merge, and is merged | 10 |
+| Complete Project/status, concepts, debugging, and reflection submission | 10 |
 | **Automatic subtotal** | **60** |
 
 ## Teacher review — 40 points
@@ -140,12 +169,19 @@ The **same CP5 Submission Issue** is the single grading page. Its automatic grad
 Teacher review focuses on:
 
 - workflow independence;
-- GitHub Project evidence;
+- Project/Kanban evidence;
 - conceptual understanding;
 - debugging / recovery reasoning;
 - reflection and work quality.
 
-The teacher enters this in the mother repository:
+For full **Project evidence**, verify:
+
+- Board has **Todo / In Progress / Review / Done**;
+- the CP5 Issue and CP5 Pull Request are in the **same Project**;
+- both finish in **Done**;
+- the workflow reflects a sensible progression, not only a final-state setup.
+
+Teacher grading format:
 
 ```text
 /manual-grade
@@ -159,11 +195,7 @@ Feedback:
 Write concise feedback here.
 ```
 
-**Final score = Automatic /60 + Teacher /40 = /100.**
-
-## Score location
-
-CP5 uses the **mother-repository submission Issue** as the single source of truth for grading. Students do **not** need to add a scoring workflow to their own repository or run anything from **Actions**.
+Students do **not** need to add grading workflows to their own CP5 repository or run Actions manually.
 
 ## Checkpoint Navigation
 
