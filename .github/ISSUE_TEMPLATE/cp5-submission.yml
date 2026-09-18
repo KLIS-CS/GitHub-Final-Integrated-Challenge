@@ -15,22 +15,11 @@ body:
         Required feature branch:
         `cp5-YOUR-GITHUB-USERNAME`
 
-  - type: input
-    id: repository_url
+  - type: markdown
     attributes:
-      label: Practice Repository URL
-      description: Full GitHub URL of the public CP5 repository you created from scratch. Repository, /tree/main, and file URLs are normalized to the repository automatically.
-      placeholder: https://github.com/YOUR-USERNAME/cp5-final-integrated-YOUR-USERNAME
-    validations:
-      required: true
-
-  - type: input
-    id: github_username
-    attributes:
-      label: GitHub Username
-      placeholder: octocat
-    validations:
-      required: true
+      value: |
+        **Repository URL and GitHub username are detected automatically from the account that opens this submission.**
+        CP5 looks for the required public repository named `cp5-final-integrated-YOUR-GITHUB-USERNAME` and writes the detected URL into this Issue.
 
   - type: input
     id: project_url
