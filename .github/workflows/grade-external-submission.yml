@@ -12,7 +12,14 @@ permissions:
 
 jobs:
   grade:
-    if: ${{ !github.event.issue.pull_request && (startsWith(github.event.issue.title, '[CP5 Submission] Final Integrated Challenge') || contains(github.event.issue.body, '### Practice Repository URL')) }}
+    if: >-
+      ${{
+        !github.event.issue.pull_request &&
+        (
+          startsWith(github.event.issue.title, '[CP5 Submission] Final Integrated Challenge') ||
+          contains(github.event.issue.body, '### Practice Repository URL')
+        )
+      }}
     runs-on: ubuntu-latest
 
     steps:
