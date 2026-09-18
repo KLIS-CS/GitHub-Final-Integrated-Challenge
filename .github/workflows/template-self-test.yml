@@ -39,8 +39,8 @@ jobs:
           grep -q 'CP5 Published Grade' README.md
           grep -q 'Final score' README.md
           grep -q 'student-score-reusable.yml@main' README.md
-          grep -q 'Practice Repository URL' .github/ISSUE_TEMPLATE/cp5-submission.yml
-          grep -q 'normalized to the repository automatically' .github/ISSUE_TEMPLATE/cp5-submission.yml
+          grep -q 'detected automatically' .github/ISSUE_TEMPLATE/cp5-submission.yml
+          grep -q 'discoverRepositoryUrl' .github/workflows/grade-external-submission.yml
           grep -q 'Debugging Scenario A' .github/ISSUE_TEMPLATE/cp5-submission.yml
           grep -q 'Debugging Scenario D' .github/ISSUE_TEMPLATE/cp5-submission.yml
           grep -q 'created the CP5 repository myself' .github/ISSUE_TEMPLATE/cp5-submission.yml
