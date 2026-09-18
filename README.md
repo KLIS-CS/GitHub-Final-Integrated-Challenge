@@ -116,11 +116,12 @@ Explain what you would inspect first and how you would recover.
 
 The mother repository automatically inspects your public repository, feature branch, Issue, and Pull Request. The teacher then grades the `/40` rubric in the same mother-repository submission Issue.
 
-After grading, a **CP5 Published Grade** record shows:
+The **same CP5 Submission Issue** is the single grading page. Its automatic grading comment is updated in place and shows:
 
 - Automatic score `/60`
 - Teacher score `/40`
 - **Final score `/100`**
+- Teacher feedback
 
 ## Automatic evidence — 60 points
 
@@ -160,38 +161,9 @@ Write concise feedback here.
 
 **Final score = Automatic /60 + Teacher /40 = /100.**
 
-## Optional: show the score inside your own CP5 repository
+## Score location
 
-CP5 must still be created from scratch, so it does **not** inherit a scoring workflow from a template. If your class wants the same student-side score display used in CP1–CP4, add this system file to your CP5 repository:
-
-```text
-.github/workflows/cp5-score.yml
-```
-
-Use this content:
-
-```yaml
-name: CP5 — Student Score
-
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: '47 * * * *'
-
-permissions:
-  contents: read
-  issues: write
-
-jobs:
-  score:
-    uses: KLIS-CS/GitHub-Final-Integrated-Challenge/.github/workflows/student-score-reusable.yml@main
-```
-
-This system file is **not part of the graded project content**. It only reads the published grade from the mother repository and creates/updates a **CP5 — Score** Issue in your own repository.
-
-After your teacher grades CP5, you can refresh immediately with:
-
-**Actions → CP5 — Student Score → Run workflow**
+CP5 uses the **mother-repository submission Issue** as the single source of truth for grading. Students do **not** need to add a scoring workflow to their own repository or run anything from **Actions**.
 
 ## Checkpoint Navigation
 
