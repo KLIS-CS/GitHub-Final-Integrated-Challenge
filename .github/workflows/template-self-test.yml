@@ -3,10 +3,10 @@ name: CP5 Assessment Self-Test
 on:
   push:
     branches: [main]
-    paths: ['README.md','.github/**']
+    paths: ['README.md','TEACHER-GRADING.md','.github/**']
   pull_request:
     branches: [main]
-    paths: ['README.md','.github/**']
+    paths: ['README.md','TEACHER-GRADING.md','.github/**']
 
 permissions:
   contents: read
@@ -21,13 +21,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for f in \
-            README.md \
-            .github/ISSUE_TEMPLATE/cp5-submission.yml \
-            .github/workflows/grade-external-submission.yml \
-            .github/workflows/publish-grade.yml \
-            .github/workflows/student-score-reusable.yml \
-            .github/examples/cp5-student-score.yml; do
+          for f in             README.md             TEACHER-GRADING.md             .github/ISSUE_TEMPLATE/cp5-submission.yml             .github/workflows/grade-external-submission.yml             .github/workflows/publish-grade.yml             .github/workflows/student-score-reusable.yml             .github/examples/cp5-student-score.yml; do
             test -f "$f" || { echo "Missing $f"; exit 1; }
           done
 
@@ -35,29 +29,43 @@ jobs:
           grep -q 'GitHub → New repository' README.md
           grep -q 'cp5-final-integrated-YOUR-GITHUB-USERNAME' README.md
           grep -q 'cp5-YOUR-GITHUB-USERNAME' README.md
-          grep -q 'Submit CP5' README.md
+          grep -q 'Todo → In Progress → Review → Done' README.md
+          grep -q 'APPROVED' README.md
+          grep -q 'merge' README.md
           grep -q 'same CP5 Submission Issue' README.md
-          grep -q 'Final score' README.md
           grep -q 'single source of truth' README.md
+
           grep -q 'detected automatically' .github/ISSUE_TEMPLATE/cp5-submission.yml
-          grep -q 'discoverRepositoryUrl' .github/workflows/grade-external-submission.yml
+          grep -q 'Todo, In Progress, Review, and Done' .github/ISSUE_TEMPLATE/cp5-submission.yml
+          grep -q 'APPROVED review before I merged' .github/ISSUE_TEMPLATE/cp5-submission.yml
+          grep -q 'Pull Request is merged' .github/ISSUE_TEMPLATE/cp5-submission.yml
           grep -q 'Debugging Scenario A' .github/ISSUE_TEMPLATE/cp5-submission.yml
           grep -q 'Debugging Scenario D' .github/ISSUE_TEMPLATE/cp5-submission.yml
-          grep -q 'created the CP5 repository myself' .github/ISSUE_TEMPLATE/cp5-submission.yml
+
+          grep -q 'discoverRepositoryUrl' .github/workflows/grade-external-submission.yml
+          grep -q "state=all" .github/workflows/grade-external-submission.yml
+          grep -q '/reviews?per_page=100' .github/workflows/grade-external-submission.yml
+          grep -q "r.state === 'APPROVED'" .github/workflows/grade-external-submission.yml
+          grep -q 'approvedBeforeMerge' .github/workflows/grade-external-submission.yml
+          grep -q 'mergedAfterApproval' .github/workflows/grade-external-submission.yml
+          grep -q 'issueClosedAfterMerge' .github/workflows/grade-external-submission.yml
+          grep -q 'Todo/In Progress/Review/Done' .github/workflows/grade-external-submission.yml
           grep -q '/manual-grade' .github/workflows/grade-external-submission.yml
           grep -q 'Workflow independence: 0/10' .github/workflows/grade-external-submission.yml
           grep -q 'Project evidence: 0/5' .github/workflows/grade-external-submission.yml
           grep -q 'Concepts: 0/10' .github/workflows/grade-external-submission.yml
           grep -q 'Debugging: 0/10' .github/workflows/grade-external-submission.yml
           grep -q 'Reflection: 0/5' .github/workflows/grade-external-submission.yml
-          grep -q 'const parsed = new URL' .github/workflows/grade-external-submission.yml
           grep -q '\*\*Final score:\*\*' .github/workflows/grade-external-submission.yml
+
+          grep -q 'Todo / In Progress / Review / Done' TEACHER-GRADING.md
+          grep -q 'APPROVED' TEACHER-GRADING.md
+
           grep -q '.cp5-grades/' .github/workflows/publish-grade.yml
-          ! grep -q 'klis-cp5-published-grade' .github/workflows/publish-grade.yml
           grep -q 'klis-cp5-local-score' .github/workflows/student-score-reusable.yml
           ! grep -q 'Issue Number:' submission.md
           ! grep -q 'Pull Request Number:' submission.md
-          echo 'CP5 from-scratch assessment portal is valid.'
+          echo 'CP5 full-workflow assessment portal is valid.'
 
       - name: Validate workflow YAML syntax
         shell: bash
