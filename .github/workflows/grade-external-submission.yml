@@ -329,7 +329,7 @@ jobs:
             ].join('\n');
 
             const scoreBody = `${marker}
-            ## CP5 Automatic Check
+            ## CP5 — Progress & Score
 
             **Student:** @${student}  
             **Practice repository:** ${repositoryUrl || 'not provided'}  
@@ -350,7 +350,7 @@ jobs:
 
             ${teacherTemplate}
 
-            **Re-grade:** after the student changes the external repository or this submission, edit this Issue to run the automatic grader again.
+            **Re-grade:** after the student changes the external repository or this submission, edit this same Issue to run the automatic grader again. Repository, Issue, branch, and Pull Request evidence are detected automatically.
             `;
 
             const existing = comments.find(c => c.user?.type === 'Bot' && c.body?.includes(marker));
