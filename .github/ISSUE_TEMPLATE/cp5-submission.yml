@@ -8,7 +8,7 @@ body:
         ## Checkpoint 5 — Final Integrated GitHub Challenge
 
         Submit only after:
-        - the CP5 Pull Request has a human **APPROVED** review;
+        - another GitHub user has left a clear check message in the CP5 Pull Request Conversation before merge;
         - the Pull Request is merged into `main`;
         - the CP5 Issue is closed;
         - both the Issue and Pull Request finish in **Done** on the same Project board.
@@ -132,7 +132,7 @@ body:
           required: true
         - label: My CP5 Issue and Pull Request are tracked in the same Project and finish in Done.
           required: true
-        - label: Another GitHub user submitted an APPROVED review before I merged the Pull Request.
+        - label: Another GitHub user left a clear check message in my Pull Request Conversation before I merged it.
           required: true
         - label: The Pull Request is merged and the linked CP5 Issue is closed.
           required: true
