@@ -221,7 +221,7 @@ jobs:
             const checkMessages = prConversationComments
               .filter(c =>
                 c.user?.type === 'User' &&
-                c.user?.login?.toLowerCase() !== student.toLowerCase() &&
+                c.user?.login?.toLowerCase() === student.toLowerCase() &&
                 c.created_at &&
                 checkPattern.test(c.body || '')
               )
@@ -301,9 +301,9 @@ jobs:
               ['Checked merged PR + Issue connection', prScore, 10,
                 !pr ? `Create the required Pull Request from ${expectedBranch} to main.` :
                 !closesIssue ? `PR #${pr.number} must use Closes/Fixes/Resolves #${cpIssue?.number || 'N'}.` :
-                !checkBeforeMerge ? `PR #${pr.number} needs a clear check message from another GitHub user before merge.` :
-                !mergedAfterCheck ? `Merge PR #${pr.number} only after the human check message.` :
-                `PR #${pr.number} checked by @${checkBeforeMerge.user.login} before merge.`],
+                !checkBeforeMerge ? `PR #${pr.number} needs a clear self-check message from the student before merge.` :
+                !mergedAfterCheck ? `Merge PR #${pr.number} only after the student self-check message.` :
+                `PR #${pr.number} self-checked by @${checkBeforeMerge.user.login} before merge.`],
               ['Submission / Project / debugging responses', submissionScore, 10,
                 submissionScore === 10
                   ? 'Project URL, Todo/In Progress/Review/Done, concepts, debugging, and reflection are complete.'
@@ -398,7 +398,7 @@ jobs:
 
             ### 🧑‍🏫 Teacher grading
 
-            Review the student's external repository, merged Pull Request and pre-merge check-message history, GitHub Project/Kanban evidence, explanations, and debugging responses. Then copy this into a new comment:
+            Review the student's external repository, merged Pull Request and pre-merge self-check history, GitHub Project/Kanban evidence, explanations, and debugging responses. Then copy this into a new comment:
 
             ${teacherTemplate}
 
