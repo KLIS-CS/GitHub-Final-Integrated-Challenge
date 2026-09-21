@@ -19,9 +19,9 @@ Closes #REPLACE-WITH-YOUR-ISSUE-NUMBER
 - [ ] The PR is added to the same Project as the CP5 Issue.
 - [ ] Issue and PR are both in **Review**.
 
-### Review and merge
+### Human check and merge
 
-- [ ] I requested review from another GitHub user.
-- [ ] I received an **APPROVED** review.
-- [ ] I merged only after approval.
+- [ ] I asked another GitHub user to inspect this Pull Request.
+- [ ] That user left a clear check message in the PR Conversation.
+- [ ] I merged only after that check message.
 - [ ] After merge, Issue and PR move to **Done**.
