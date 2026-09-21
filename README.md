@@ -13,7 +13,7 @@ repository setup
 → Project/Kanban
 → feature branch
 → Pull Request
-→ review
+→ self-check
 → merge
 → Done
 → debugging / recovery
@@ -40,7 +40,7 @@ When creating it, configure:
 
 ## Scenario
 
-Your team needs a JavaScript feature that displays a welcome message. You are responsible for planning the work, implementing it safely, getting it reviewed, merging it, and closing the work item.
+Your team needs a JavaScript feature that displays a welcome message. You are responsible for planning the work, implementing it safely, self-checking it, merging it, and closing the work item.
 
 ## Required workflow
 
