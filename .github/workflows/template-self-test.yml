@@ -30,24 +30,24 @@ jobs:
           grep -q 'cp5-final-integrated-YOUR-GITHUB-USERNAME' README.md
           grep -q 'cp5-YOUR-GITHUB-USERNAME' README.md
           grep -q 'Todo → In Progress → Review → Done' README.md
-          grep -q 'APPROVED' README.md
+          ! grep -q 'APPROVED' README.md
           grep -q 'merge' README.md
           grep -q 'same CP5 Submission Issue' README.md
           grep -q 'single source of truth' README.md
 
           grep -q 'detected automatically' .github/ISSUE_TEMPLATE/cp5-submission.yml
           grep -q 'Todo, In Progress, Review, and Done' .github/ISSUE_TEMPLATE/cp5-submission.yml
-          grep -q 'APPROVED review before I merged' .github/ISSUE_TEMPLATE/cp5-submission.yml
+          grep -q 'check message' .github/ISSUE_TEMPLATE/cp5-submission.yml
           grep -q 'Pull Request is merged' .github/ISSUE_TEMPLATE/cp5-submission.yml
           grep -q 'Debugging Scenario A' .github/ISSUE_TEMPLATE/cp5-submission.yml
           grep -q 'Debugging Scenario D' .github/ISSUE_TEMPLATE/cp5-submission.yml
 
           grep -q 'discoverRepositoryUrl' .github/workflows/grade-external-submission.yml
           grep -q "state=all" .github/workflows/grade-external-submission.yml
-          grep -q '/reviews?per_page=100' .github/workflows/grade-external-submission.yml
-          grep -q "r.state === 'APPROVED'" .github/workflows/grade-external-submission.yml
-          grep -q 'approvedBeforeMerge' .github/workflows/grade-external-submission.yml
-          grep -q 'mergedAfterApproval' .github/workflows/grade-external-submission.yml
+          grep -q '/comments?per_page=100' .github/workflows/grade-external-submission.yml
+          grep -q 'checkPattern' .github/workflows/grade-external-submission.yml
+          grep -q 'checkBeforeMerge' .github/workflows/grade-external-submission.yml
+          grep -q 'mergedAfterCheck' .github/workflows/grade-external-submission.yml
           grep -q 'issueClosedAfterMerge' .github/workflows/grade-external-submission.yml
           grep -q 'Todo/In Progress/Review/Done' .github/workflows/grade-external-submission.yml
           grep -q '/manual-grade' .github/workflows/grade-external-submission.yml
@@ -59,7 +59,7 @@ jobs:
           grep -q '\*\*Final score:\*\*' .github/workflows/grade-external-submission.yml
 
           grep -q 'Todo / In Progress / Review / Done' TEACHER-GRADING.md
-          grep -q 'APPROVED' TEACHER-GRADING.md
+          ! grep -q 'APPROVED' TEACHER-GRADING.md
 
           grep -q '.cp5-grades/' .github/workflows/publish-grade.yml
           grep -q 'klis-cp5-local-score' .github/workflows/student-score-reusable.yml
