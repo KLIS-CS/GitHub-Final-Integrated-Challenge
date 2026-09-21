@@ -111,8 +111,7 @@ Then:
 
 1. add the PR to the **same GitHub Project**;
 2. move both Issue and PR to **Review**;
-3. ask another GitHub user to inspect the Pull Request;
-4. have that user leave a clear **check message** in the PR Conversation, such as `Checked — ready to merge.` or `Looks good.`
+3. inspect your own Pull Request and leave a clear **self-check message** in the PR Conversation, such as `Self-check complete: files, Issue link, and submission verified. Ready to merge.`
 
 ### 6. Merge and finish
 
@@ -122,7 +121,7 @@ After approval:
 2. confirm the linked Issue closes;
 3. move both Issue and PR to **Done**.
 
-Do not merge before the human check message. The grader compares the message timestamp with the merge timestamp.
+Do not merge before your self-check message. The grader compares the message timestamp with the merge timestamp.
 
 Deleting the feature branch after merge is allowed. The Pull Request keeps the head ref/SHA and Conversation history needed for grading.
 
@@ -139,7 +138,7 @@ Explain what you would inspect first and how you would recover safely.
 
 ## Submit CP5
 
-Submit only after the reviewed PR is merged and the Project is in its final state:
+Submit only after the self-checked PR is merged and the Project is in its final state:
 
 [![Submit CP5](https://img.shields.io/badge/SUBMIT%20CP5-%E2%86%92-0969da?style=for-the-badge&logo=github)](https://github.com/KLIS-CS/GitHub-Final-Integrated-Challenge/issues/new?template=cp5-submission.yml)
 
@@ -160,7 +159,7 @@ The **same CP5 Submission Issue** is the single source of truth for grading. Its
 | Meaningful README / `.gitignore` / LICENSE / `src/index.js` | 10 |
 | Correct feature-branch and PR change/commit evidence | 10 |
 | `[CP5]` Issue quality and closure after merge | 10 |
-| PR links Issue, receives a human check message before merge, and is merged | 10 |
+| PR links Issue, contains the student's self-check message before merge, and is merged | 10 |
 | Complete Project/status, concepts, debugging, and reflection submission | 10 |
 | **Automatic subtotal** | **60** |
 
