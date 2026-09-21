@@ -256,7 +256,7 @@ jobs:
               'Question 2 — Commit vs Push',
               'Question 3 — Origin',
               'Question 4 — Issue Before Coding',
-              'Question 5 — Pull Request, Review, and Merge'
+              'Question 5 — Pull Request, Self-Check, and Merge'
             ];
             const debugLabels = [
               'Debugging Scenario A — You are on main',
@@ -298,7 +298,7 @@ jobs:
                 cpIssue
                   ? `Issue #${cpIssue.number}; checklist=${checklistCount}; label=${hasLabel}; assigned=${assignedToSelf}; closed-after-merge=${issueClosedAfterMerge}`
                   : 'Create a student-owned Issue whose title begins [CP5].'],
-              ['Checked merged PR + Issue connection', prScore, 10,
+              ['Self-checked merged PR + Issue connection', prScore, 10,
                 !pr ? `Create the required Pull Request from ${expectedBranch} to main.` :
                 !closesIssue ? `PR #${pr.number} must use Closes/Fixes/Resolves #${cpIssue?.number || 'N'}.` :
                 !checkBeforeMerge ? `PR #${pr.number} needs a clear self-check message from the student before merge.` :
