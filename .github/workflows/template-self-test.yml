@@ -37,7 +37,7 @@ jobs:
 
           grep -q 'detected automatically' .github/ISSUE_TEMPLATE/cp5-submission.yml
           grep -q 'Todo, In Progress, Review, and Done' .github/ISSUE_TEMPLATE/cp5-submission.yml
-          grep -q 'check message' .github/ISSUE_TEMPLATE/cp5-submission.yml
+          grep -q 'self-check message' .github/ISSUE_TEMPLATE/cp5-submission.yml
           grep -q 'Pull Request is merged' .github/ISSUE_TEMPLATE/cp5-submission.yml
           grep -q 'Debugging Scenario A' .github/ISSUE_TEMPLATE/cp5-submission.yml
           grep -q 'Debugging Scenario D' .github/ISSUE_TEMPLATE/cp5-submission.yml
@@ -46,6 +46,7 @@ jobs:
           grep -q "state=all" .github/workflows/grade-external-submission.yml
           grep -q '/comments?per_page=100' .github/workflows/grade-external-submission.yml
           grep -q 'checkPattern' .github/workflows/grade-external-submission.yml
+          grep -q "c.user?.login?.toLowerCase() === student.toLowerCase()" .github/workflows/grade-external-submission.yml
           grep -q 'checkBeforeMerge' .github/workflows/grade-external-submission.yml
           grep -q 'mergedAfterCheck' .github/workflows/grade-external-submission.yml
           grep -q 'issueClosedAfterMerge' .github/workflows/grade-external-submission.yml
