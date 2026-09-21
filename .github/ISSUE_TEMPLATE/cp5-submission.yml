@@ -74,7 +74,7 @@ body:
   - type: textarea
     id: q5
     attributes:
-      label: Question 5 — Pull Request, Review, and Merge
+      label: Question 5 — Pull Request, Self-Check, and Merge
       description: What should you inspect in a Pull Request before merging changes into main?
     validations:
       required: true
