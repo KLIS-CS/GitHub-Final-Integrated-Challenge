@@ -8,7 +8,7 @@ body:
         ## Checkpoint 5 — Final Integrated GitHub Challenge
 
         Submit only after:
-        - another GitHub user has left a clear check message in the CP5 Pull Request Conversation before merge;
+        - you have inspected your own CP5 Pull Request and left a clear self-check message in the Conversation before merge;
         - the Pull Request is merged into `main`;
         - the CP5 Issue is closed;
         - both the Issue and Pull Request finish in **Done** on the same Project board.
@@ -75,7 +75,7 @@ body:
     id: q5
     attributes:
       label: Question 5 — Pull Request, Review, and Merge
-      description: What do the Pull Request and review process allow a team to do before changes enter main?
+      description: What should you inspect in a Pull Request before merging changes into main?
     validations:
       required: true
 
@@ -132,7 +132,7 @@ body:
           required: true
         - label: My CP5 Issue and Pull Request are tracked in the same Project and finish in Done.
           required: true
-        - label: Another GitHub user left a clear check message in my Pull Request Conversation before I merged it.
+        - label: I inspected my Pull Request and left a clear self-check message in the Conversation before I merged it.
           required: true
         - label: The Pull Request is merged and the linked CP5 Issue is closed.
           required: true
