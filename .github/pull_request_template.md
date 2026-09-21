@@ -19,9 +19,9 @@ Closes #REPLACE-WITH-YOUR-ISSUE-NUMBER
 - [ ] The PR is added to the same Project as the CP5 Issue.
 - [ ] Issue and PR are both in **Review**.
 
-### Human check and merge
+### Self-check and merge
 
-- [ ] I asked another GitHub user to inspect this Pull Request.
-- [ ] That user left a clear check message in the PR Conversation.
-- [ ] I merged only after that check message.
+- [ ] I inspected this Pull Request myself.
+- [ ] I left a clear self-check message in the PR Conversation.
+- [ ] I merged only after my self-check message.
 - [ ] After merge, Issue and PR move to **Done**.
