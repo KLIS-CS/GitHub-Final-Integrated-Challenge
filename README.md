@@ -111,8 +111,8 @@ Then:
 
 1. add the PR to the **same GitHub Project**;
 2. move both Issue and PR to **Review**;
-3. request review from another GitHub user;
-4. receive at least one submitted **APPROVED** review.
+3. ask another GitHub user to inspect the Pull Request;
+4. have that user leave a clear **check message** in the PR Conversation, such as `Checked — ready to merge.` or `Looks good.`
 
 ### 6. Merge and finish
 
@@ -122,9 +122,9 @@ After approval:
 2. confirm the linked Issue closes;
 3. move both Issue and PR to **Done**.
 
-Do not merge before approval. The grader compares review and merge timestamps.
+Do not merge before the human check message. The grader compares the message timestamp with the merge timestamp.
 
-Deleting the feature branch after merge is allowed. The Pull Request keeps the head ref/SHA and review history needed for grading.
+Deleting the feature branch after merge is allowed. The Pull Request keeps the head ref/SHA and Conversation history needed for grading.
 
 ### 7. Debugging / recovery
 
@@ -160,7 +160,7 @@ The **same CP5 Submission Issue** is the single source of truth for grading. Its
 | Meaningful README / `.gitignore` / LICENSE / `src/index.js` | 10 |
 | Correct feature-branch and PR change/commit evidence | 10 |
 | `[CP5]` Issue quality and closure after merge | 10 |
-| PR links Issue, receives approval before merge, and is merged | 10 |
+| PR links Issue, receives a human check message before merge, and is merged | 10 |
 | Complete Project/status, concepts, debugging, and reflection submission | 10 |
 | **Automatic subtotal** | **60** |
 
